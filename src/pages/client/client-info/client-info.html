@@ -1,0 +1,63 @@
+<!--
+  Generated template for the ClientInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Client Info</ion-title>
+    <ion-buttons icon-only end>
+        <button (click)="presentDeleteConfirmDialog()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        </ion-buttons>
+  </ion-navbar>
+
+  
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list no-lines>
+ 
+        <form [formGroup]="userForm">
+     
+            <ion-item hidden>
+                <ion-label floating>firebaseId</ion-label>
+                <ion-input formControlName="firebaseId" type="text" value="{{clientToUpdate ? clientToUpdate.firebaseId : ''}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Company Name</ion-label>
+                <ion-input formControlName="companyName" type="text" value="{{clientToUpdate ? clientToUpdate.companyName : ''}}"></ion-input>
+            </ion-item>
+
+            <ion-item color="danger" *ngIf="!userForm.controls.companyName.valid && (userForm.controls.companyName.dirty || submitAttempt)">
+                <p>Please enter a valid name.</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>CIF</ion-label>
+                <ion-input formControlName="cif" type="text" value="{{clientToUpdate ? clientToUpdate.cif : ''}}"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>First Name</ion-label>
+                <ion-input formControlName="firstName" type="text" value="{{clientToUpdate? clientToUpdate.firstName: ''}}"></ion-input>
+            </ion-item>
+     
+            <ion-item>
+                <ion-label floating>Last Name</ion-label>
+                <ion-input formControlName="lastName" type="text" value="{{clientToUpdate ? clientToUpdate.lastName : ''}}"></ion-input>
+            </ion-item>
+     
+            <ion-item>
+                <ion-label floating>email</ion-label>
+                <ion-input formControlName="email" type="email" value="{{clientToUpdate ? clientToUpdate.email : ''}}"></ion-input>
+            </ion-item>
+        </form>
+     
+        <button ion-button full (click)="saveOrUpdate()">{{operationType}}</button>
+    </ion-list>
+</ion-content>
