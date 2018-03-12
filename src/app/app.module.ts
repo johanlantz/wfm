@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ClientInfoPage } from '../pages/client/client-info/client-info';
 import { ClientListPage } from '../pages/client/client-list/client-list';
+import { TaskFormPage } from '../pages/task-form/task-form';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ClientListPage } from '../pages/client/client-list/client-list';
     HomePage,
     ClientListPage,
     ClientInfoPage,
+    TaskFormPage,
     TabsPage
   ],
   imports: [
@@ -35,6 +37,7 @@ import { ClientListPage } from '../pages/client/client-list/client-list';
     HomePage,
     ClientListPage,
     ClientInfoPage,
+    TaskFormPage,
     TabsPage
   ],
   providers: [
