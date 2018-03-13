@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ClientListPage } from '../client/client-list/client-list';
-import { TaskFormPage } from '../task-form/task-form';
+import { TaskFormPage } from '../tasks/task-form/task-form';
 
 @Component({
   selector: 'page-home',

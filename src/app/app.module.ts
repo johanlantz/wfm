@@ -12,7 +12,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ClientInfoPage } from '../pages/client/client-info/client-info';
 import { ClientListPage } from '../pages/client/client-list/client-list';
-import { TaskFormPage } from '../pages/task-form/task-form';
+import { TaskFormPage } from '../pages/tasks/task-form/task-form';
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TaskFormPage } from '../pages/task-form/task-form';
   ],
   imports: [
     BrowserModule,
+    SignaturePadModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
