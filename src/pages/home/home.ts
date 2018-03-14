@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ClientListPage } from '../client/client-list/client-list';
 import { TaskFormPage } from '../tasks/task-form/task-form';
+import { TaskListPage } from '../tasks/task-list/task-list';
 
 @Component({
   selector: 'page-home',
@@ -17,6 +18,6 @@ export class HomePage {
   }
 
   showForm() {
-    this.navCtrl.push(TaskFormPage);
+    this.navCtrl.push(TaskListPage);
   }
 }

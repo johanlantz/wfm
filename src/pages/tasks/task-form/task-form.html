@@ -1,0 +1,68 @@
+<!--
+  Generated template for the TaskFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>TaskForm</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="taskDate"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Client</ion-label>
+    <ion-select [(ngModel)]="selectedClientFirebaseId" (ionChange)="clientSelected()">
+      <ion-option *ngFor="let client of clients" [value]="client.firebaseId">{{client.companyName}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Center</ion-label>
+    <ion-select [(ngModel)]="selectedCenter">
+      <ion-option *ngFor="let client of clients; let i = index" [value]="">TODO add centers</ion-option>
+    </ion-select>
+  </ion-item>
+  
+  <form [formGroup]="taskForm">
+    <ion-list>
+      <ion-item *ngFor="let task of tasks">
+        <ion-label>{{task}}</ion-label>
+        <ion-checkbox [formControlName]="task"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </form>
+  
+  <ion-item>
+    <ion-label>Start time</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="startTime"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>End time</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="endTime"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Worker</ion-label>
+    <ion-select [(ngModel)]="selectedWorker">
+      <ion-option *ngFor="let worker of workers">{{worker}}</ion-option>
+    </ion-select>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Observations</ion-label>
+    <ion-textarea [(ngModel)]="observations">
+
+    </ion-textarea>
+  </ion-item>
+
+  <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+
+  <button ion-button (click)="savePerformedTask()">Done</button>
+</ion-content>

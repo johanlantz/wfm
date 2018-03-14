@@ -1,0 +1,35 @@
+<!--
+  Generated template for the TaskListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Tasks</ion-title>
+    <ion-buttons icon-only end>
+      <button (click)="addTask()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item>
+        <ion-label>Client</ion-label>
+        <ion-select [(ngModel)]="selectedClientFirebaseId" (ionChange)="clientSelected()">
+          <ion-option *ngFor="let client of clients" [value]="client.firebaseId">{{client.companyName}}</ion-option>
+        </ion-select>
+      </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let task of tasks" (click)="editTask(task)">
+        <h2>{{task.worker}}@{{task.center}}</h2>
+        <h3>{{task.date}} {{task.sT}} -> {{task.eT}}</h3>
+        <p>{{task.tasks}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

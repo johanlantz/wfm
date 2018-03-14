@@ -14,6 +14,8 @@ import { ClientInfoPage } from '../pages/client/client-info/client-info';
 import { ClientListPage } from '../pages/client/client-list/client-list';
 import { TaskFormPage } from '../pages/tasks/task-form/task-form';
 import { SignaturePadModule } from 'angular2-signaturepad';
+import { TaskListPage } from '../pages/tasks/task-list/task-list';
+import { TaskInfoPage } from '../pages/tasks/task-info/task-info';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { SignaturePadModule } from 'angular2-signaturepad';
     HomePage,
     ClientListPage,
     ClientInfoPage,
+    TaskListPage,
     TaskFormPage,
+    TaskInfoPage,
     TabsPage
   ],
   imports: [
@@ -39,7 +43,9 @@ import { SignaturePadModule } from 'angular2-signaturepad';
     HomePage,
     ClientListPage,
     ClientInfoPage,
+    TaskListPage,
     TaskFormPage,
+    TaskInfoPage,
     TabsPage
   ],
   providers: [

@@ -1,0 +1,52 @@
+<!--
+  Generated template for the TaskInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>TaskInfo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list no-lines>
+ 
+        <form [formGroup]="taskForm">
+     
+            <ion-item hidden>
+                <ion-label floating>firebaseId</ion-label>
+                <ion-input formControlName="firebaseId" type="text" value="{{taskToUpdate ? taskToUpdate.firebaseId : ''}}"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Center</ion-label>
+                <ion-input formControlName="center" type="text" value="{{taskToUpdate ? taskToUpdate.center : ''}}"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Worker</ion-label>
+                <ion-input formControlName="worker" type="text" value="{{taskToUpdate? taskToUpdate.worker: ''}}"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Start time</ion-label>
+                <ion-input formControlName="sT" type="text" value="{{taskToUpdate? taskToUpdate.sT: ''}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>End time</ion-label>
+                <ion-input formControlName="eT" type="text" value="{{taskToUpdate? taskToUpdate.eT: ''}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Obsvervations</ion-label>
+                <ion-input formControlName="obs" type="text" value="{{taskToUpdate? taskToUpdate.obs: ''}}"></ion-input>
+            </ion-item>
+        </form>
+      
+        <button ion-button full (click)="update()">Update</button>
+    </ion-list>
+</ion-content>
