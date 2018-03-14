@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>TaskInfo</ion-title>
+    <ion-title>Edit task</ion-title>
+    <ion-buttons icon-only end>
+        <button (click)="presentDeleteConfirmDialog()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        </ion-buttons>
   </ion-navbar>
 
 </ion-header>

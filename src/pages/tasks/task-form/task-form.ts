@@ -26,7 +26,7 @@ export class TaskFormPage {
   taskDate: String = new Date().toISOString();
   startTime = new Date().toISOString();
   endTime = new Date().toISOString();
-  clients: Array<Object>;
+  clients: Array<Client>;
   selectedClientFirebaseId: string;
   selectedCenter: any; //todo
   tasks = ["Maintenence", "Windows", "Lights", "Occasional", "Cleaning", "Polish", "Terrass", "Other"];
@@ -35,6 +35,7 @@ export class TaskFormPage {
   selectedWorker: String;
   taskForm: FormGroup;
   mySignature: String;
+  currentCenter: String;
 
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
  
@@ -83,7 +84,13 @@ export class TaskFormPage {
   }
 
   clientSelected() {
-    console.log("Company selected");
+    console.log("Client selected: " + this.selectedClientFirebaseId);
+    for (let i = 0; i < this.clients.length; i++) {
+      let client = this.clients[i];
+      if (client.firebaseId == this.selectedClientFirebaseId) {
+        this.currentCenter = client.center;
+      }
+    }
   }
 
   getPerformedTasks() {
@@ -119,7 +126,7 @@ export class TaskFormPage {
 
     let newTask = {
       date: this.taskDate.substring(0,10),  
-      center: "Todo center",
+      center: this.currentCenter,
       worker: this.selectedWorker != null ? this.selectedWorker : "",
       sT: startTimeHours + ":" + startTimeMinutes,  
       eT: endTimeHours + ":" + endTimeMinutes,

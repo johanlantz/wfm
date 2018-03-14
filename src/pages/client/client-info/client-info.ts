@@ -5,19 +5,13 @@ import { AlertController } from 'ionic-angular';
 
 import * as firebase from 'firebase';
 import 'firebase/firestore';
+import { Client } from '../client-model';
 
 /**
  * Class to handle user info, both adding a new user and editing an existing one.
  */
 
-export interface Client {
-  firebaseId: string,
-  companyName; string,
-  cif: string,
-  firstName: string,
-  lastName: string,
-  email: string
-}
+
 
 @IonicPage()
 @Component({
@@ -44,6 +38,7 @@ export class ClientInfoPage {
       firebaseId: [''],
       companyName: ['', Validators.required],
       cif: [''],
+      center: [''],
       firstName: [''],
       lastName: [''],
       email: ['']

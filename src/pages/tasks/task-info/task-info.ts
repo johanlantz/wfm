@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import * as firebase from 'firebase';
@@ -23,7 +23,7 @@ export class TaskInfoPage {
   submitAttempt = false;
   clientFirebaseId: String = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private alertCtrl: AlertController) {
     this.db = firebase.firestore();
 
     this.taskToUpdate = navParams.get("task");
@@ -63,5 +63,36 @@ export class TaskInfoPage {
       this.navCtrl.pop();
     } catch (error) { console.error("Error adding or updating document: ", error); }
 
+  }
+
+
+  async deleteTask() {
+    try {
+      await this.db.collection("clients").doc(this.clientFirebaseId).collection("work").doc(this.taskToUpdate.firebaseId).delete();
+      this.navCtrl.pop();
+    } catch (error) { console.error("Failed to delete client")};
+  }
+
+  presentDeleteConfirmDialog() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm delete',
+      message: 'Are you sure you want to delete this task?<br><br>This can not be undone.',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            this.deleteTask()
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
